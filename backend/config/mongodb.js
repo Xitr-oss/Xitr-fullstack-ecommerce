@@ -14,13 +14,13 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
-  mongoose.connection.on("connected", () => {
+  mongoose.connection.on('connected', () => {
     console.log("DB Connected");
   });
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "e-commerce", // 👈 Specify the DB name here
+      dbName: 'e-commerce', // this sets the database name properly
     });
   } catch (error) {
     console.error("DB connection error:", error);
@@ -28,5 +28,6 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
 
 
