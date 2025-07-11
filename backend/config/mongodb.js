@@ -18,16 +18,22 @@ const connectDB = async () => {
     console.log("DB Connected");
   });
 
+  mongoose.connection.on('error', (err) => {
+    console.error("DB Connection Error:", err);
+  });
+
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: 'e-commerce', // this sets the database name properly
+      dbName: 'e-commerce',
     });
+    console.log("MongoDB Connected Successfully");
   } catch (error) {
-    console.error("DB connection error:", error);
+    console.error("DB Connection Error:", error);
   }
 };
 
 export default connectDB;
+
 
 
 
